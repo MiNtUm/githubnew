@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  react:
+    build: .
+    ports: 
+      - "3000:3000"
+    volumes: 
+      - .:/app
+      - /app/node_modules
+  tests:
+    build: .
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
